@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>慈善抽獎查詢系統</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #fffaf0; }
+    input, button { padding: 10px; margin: 10px; font-size: 16px; }
+    #result { margin-top: 20px; font-size: 20px; font-weight: bold; }
+    .win { color: green; }
+    .lose { color: red; }
+  </style>
+</head>
+<body>
+  <h1>🐾 流浪動物之家 慈善抽獎查詢 🐾</h1>
+  <p>請輸入您的抽獎券序號：</p>
+  <input type="text" id="ticketNumber" placeholder="例如：001534">
+  <button onclick="checkResult()">查詢</button>
+  <div id="result"></div>
+
+  <script>
+    // 更新後的中獎號碼
+    const winners = ['001534', '002765', '002025', '001158', '001267', '002467', '002677'];
+
+    function checkResult() {
+      const num = document.getElementById("ticketNumber").value.trim();
+      const result = document.getElementById("result");
+
+      if (winners.includes(num)) {
+        result.innerHTML = "🎉 恭喜！您的號碼 " + num + " 中獎啦！";
+        result.className = "win";
+      } else if (num === "") {
+        result.innerHTML = "⚠️ 請輸入抽獎券號碼";
+        result.className = "";
+      } else {
+        result.innerHTML = "😢 很遺憾，您的號碼 " + num + " 沒有中獎。";
+        result.className = "lose";
+      }
+    }
+  </script>
+</body>
+</html>
